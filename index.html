@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>QR Code Generator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>QR Code Generator</h1>
+
+<div class="container">
+
+  <div class="left">
+    <label for="qrType">Choose type:</label>
+    <select id="qrType">
+      <option value="url">URL</option>
+      <option value="text">Plain Text</option>
+      <option value="email">Email</option>
+      <option value="phone">Phone Number</option>
+      <option value="wifi">Wi-Fi</option>
+    </select>
+
+    <div id="inputArea"></div>
+    <p id="errorMsg" class="error"></p>
+
+    <hr>
+
+    <label for="fgColor">QR Color:</label>
+    <input type="color" id="fgColor" value="#000000">
+
+    <label for="bgColor">Background Color:</label>
+    <input type="color" id="bgColor" value="#ffffff">
+
+    <label for="qrSize">Size:</label>
+    <select id="qrSize">
+      <option value="150">Small (150px)</option>
+      <option value="250" selected>Medium (250px)</option>
+      <option value="350">Large (350px)</option>
+    </select>
+
+    <label for="ecLevel">Error Correction:</label>
+    <select id="ecLevel">
+      <option value="L">Low</option>
+      <option value="M" selected>Medium</option>
+      <option value="Q">Quartile</option>
+      <option value="H">High</option>
+    </select>
+
+    <br><br>
+    <button onclick="generateQR()">Generate QR Code</button>
+  </div>
+
+  <div class="right">
+    <h3>Preview</h3>
+    <canvas id="qrCanvas" width="250" height="250"></canvas>
+    <br>
+    <button id="downloadBtn" onclick="downloadQR()" disabled>Download PNG</button>
+  </div>
+
+</div>
+
+<hr>
+
+<h3>Recent QR Codes</h3>
+<div id="recentList"></div>
+<button onclick="clearRecent()">Clear History</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
